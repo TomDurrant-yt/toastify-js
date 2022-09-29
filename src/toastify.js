@@ -47,6 +47,8 @@
     style: {background: ''}
   };
 
+  Toastify.spacing = 15;
+
   // Defining the prototype of the object
   Toastify.lib = Toastify.prototype = {
     toastify: version,
@@ -342,6 +344,11 @@
     },
   };
 
+  Toastify.setSpacing = function(spacing) {
+    Toastify.spacing = spacing;
+    Toastify.reposition();
+  };
+
   // Positioning the toasts on the DOM
   Toastify.reposition = function() {
 
@@ -376,7 +383,7 @@
       var height = allToasts[i].offsetHeight;
       classUsed = classUsed.substr(9, classUsed.length-1)
       // Spacing between toasts
-      var offset = 15;
+      var offset = Toastify.spacing;
 
       var width = window.innerWidth > 0 ? window.innerWidth : screen.width;
 

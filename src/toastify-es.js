@@ -57,6 +57,8 @@ class Toastify {
       style: { background: "" },
     };
 
+    spacing = 15;
+
     constructor(options) {
       /**
        * The version of Toastify
@@ -373,6 +375,11 @@ class Toastify {
       ); // Binding `this` for function invocation
     }
 
+    setSpacing (spacing) {
+      this.spacing = spacing;
+      this._reposition();
+    };
+
     /**
      * Position the toast on the DOM
      * @private
@@ -410,7 +417,7 @@ class Toastify {
         let height = allToasts[i].offsetHeight;
         classUsed = classUsed.substr(9, classUsed.length - 1)
         // Spacing between toasts
-        let offset = 15;
+        let offset = this.spacing;
 
         let width = window.innerWidth > 0 ? window.innerWidth : screen.width;
 
